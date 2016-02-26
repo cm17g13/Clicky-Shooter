@@ -2,12 +2,13 @@
 using System.Collections;
 
 public class Troll : MonoBehaviour {
-
+    public GameController gc;
     public bool moving;
     public int pulseRate;
 
 	// Use this for initialization
 	void Start () {
+        gc = FindObjectOfType<GameController>();
         if (moving) {
             float s = Random.Range(10, 25);
             transform.localScale = new Vector2(s, s);
@@ -39,6 +40,7 @@ public class Troll : MonoBehaviour {
 
     void OnMouseEnter()
     {
+        gc.lives--;
         Destroy(gameObject);
     }
 }

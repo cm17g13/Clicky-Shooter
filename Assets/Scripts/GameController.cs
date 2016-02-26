@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class GameController : MonoBehaviour
 {
@@ -8,6 +8,12 @@ public class GameController : MonoBehaviour
     public GameObject troll;
     public float startWait;
     public float waveWait;
+
+    public int lives;
+    public Text livesText;
+
+    public int score;
+    public Text scoreText;
 
     void Start()
     {
@@ -18,7 +24,8 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        
+        livesText.text = "" + lives;
+        scoreText.text = "" + score;
     }
 
     IEnumerator SpawnHappies()

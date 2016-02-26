@@ -14,8 +14,6 @@ public class DialogManager : MonoBehaviour {
     public int currentLine;
     public int endLine;
 
-    public GameController player;
-
     void Start()
     {
         if (textFile != null) {

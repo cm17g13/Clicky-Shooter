@@ -2,12 +2,13 @@
 using System.Collections;
 
 public class Happy : MonoBehaviour {
-
+    public GameController gc;
     public float countdown;
 
 	// Use this for initialization
 	void Start () {
-	}
+        gc = FindObjectOfType<GameController>();
+    }
 
     // Update is called once per frame
     void Update()
@@ -26,6 +27,7 @@ public class Happy : MonoBehaviour {
 
     void OnMouseDown()
     {
+        gc.score += 1;
         Destroy(gameObject);
     }
 }
