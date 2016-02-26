@@ -1,0 +1,32 @@
+Welcome to Clicky Shooter (press enter to continue)
+This is a smiley face. You click on it to gain score, it will disapear when you do.
+The smaller it is, the more score you get from clicking on it.
+Go on have a go, but watch out. If it gets to big you lose.
+
+
+Message 1
+.
+..
+...
+....
+...
+..
+.
+
+Message 2
+.
+..
+...
+....
+...
+..
+.
+
+Message 3
+.
+..
+...
+....
+...
+..
+.

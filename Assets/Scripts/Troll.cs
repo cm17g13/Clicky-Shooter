@@ -4,11 +4,12 @@ using System.Collections;
 public class Troll : MonoBehaviour {
 
     public bool moving;
+    public int pulseRate;
 
 	// Use this for initialization
 	void Start () {
         if (moving) {
-            float s = Random.Range(1, 25);
+            float s = Random.Range(10, 25);
             transform.localScale = new Vector2(s, s);
         }
         else
@@ -28,6 +29,11 @@ public class Troll : MonoBehaviour {
             {
                 Destroy(gameObject);
             }
+        } else
+        {
+            float s = transform.localScale.x + pulseRate * Time.deltaTime;
+            if (s <= 5 || s >= 10) pulseRate = -pulseRate;
+            transform.localScale = new Vector2(s, s);
         }
 	}
 
