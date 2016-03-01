@@ -5,6 +5,7 @@ using UnityEngine.UI;
 public class DialogManager : MonoBehaviour {
 
     public GameObject textBox;
+    public GameObject skipButton;
     public Text dialog;
 
     public TextAsset textFile;
@@ -32,12 +33,16 @@ public class DialogManager : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.Return))
         {
-            currentLine += 1;
+            if (currentLine == endLine)
+            {
+                skipButton.SetActive(false);
+                textBox.SetActive(false);
+            } else
+            {
+                currentLine += 1;
+            }  
         }
 
-        if(currentLine > endLine)
-        {
-            textBox.SetActive(false);
-        }
+
     }
 }
