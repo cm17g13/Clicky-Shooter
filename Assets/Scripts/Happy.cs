@@ -27,7 +27,7 @@ public class Happy : MonoBehaviour {
 
     void OnMouseDown()
     {
-        gc.score += 1;
+        gc.score += (int)(countdown * 100);
         Destroy(gameObject);
     }
 }
