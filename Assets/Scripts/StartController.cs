@@ -58,13 +58,24 @@ public class StartController : MonoBehaviour
                     break;
             case 4:
                 dialog.text = "However, the bigger they grow, the less points you score.";
-                if (Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return) || displayHappy == null)
                 {
                     state++;
                     if (displayHappy == null) displayHappy = (GameObject)Instantiate(happy, spawnPosition, Quaternion.identity);
                 }
                 break;
             case 5:
+                dialog.text = "The idea of the game is to click as many happies as you can.";
+                if (displayHappy == null)
+                {
+                    state++;
+                    for (int i = 0; i < 10; i++)
+                    {
+                        Vector2 randomSpawn = new Vector2(Random.Range(-90, 90), Random.Range(-50, 47));
+                        displayHappy = (GameObject)Instantiate(happy, randomSpawn, Quaternion.identity);
+                    }
+                        
+                }
                 break;
             case 6:
                 break;
@@ -95,12 +106,6 @@ public class StartController : MonoBehaviour
 }
 
 /*
-    This is a Happy. To score points, you must click on them!
-Too small? Thought so.
-Over time, Happies will grow bigger so that it is easier to click.
-However, the bigger they grow, the less points you score.
-If you leave them unclicked for too long, they become Sad and fade away...
-Click as many Happies as you can!
 
 Too boring? Yep, we know.
 So here's a Troll!
