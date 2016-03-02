@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class GameOverController : MonoBehaviour {
@@ -18,6 +17,6 @@ public class GameOverController : MonoBehaviour {
 	}
 
 	public void btnPlayAgain_Clicked() {
-		SceneManager.LoadScene("Main");
+        Application.LoadLevel("Main");
 	}
 }

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.SceneManagement;
 using System.Collections;
 
 public class StartController : MonoBehaviour {
@@ -15,6 +14,6 @@ public class StartController : MonoBehaviour {
 	}
 
 	public void btnPlay_Clicked() {
-		SceneManager.LoadScene("Main");
+        Application.LoadLevel("Main");
 	}
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
@@ -36,7 +35,7 @@ public class GameController : MonoBehaviour
 		time -= Time.deltaTime;
 
 		if(time <= 0 || lives <= 0) {
-			SceneManager.LoadScene("GameOver");
+			Application.LoadLevel("GameOver");
 		}
 	}
 
