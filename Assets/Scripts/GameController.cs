@@ -2,20 +2,27 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour
 {
 	public GameObject happy;
 	public GameObject troll;
+	public float happyRate;
+	public float staticTrollRate;
+	public float movingTrollRate;
+
+	public Text livesText;
+	public Text timeText;
+	public Text scoreText;
 
 	public int lives;
-	public Text livesText;
-
-	public int score;
-	public Text scoreText;
+	public float time;
+	public static int score;
 
 	void Start()
 	{
+		score = 0;
 		StartCoroutine(SpawnHappies());
 		StartCoroutine(SpawnStaticTrolls());
 		StartCoroutine(SpawnMovingTrolls());
@@ -24,36 +31,39 @@ public class GameController : MonoBehaviour
 	void Update()
 	{
 		livesText.text = "" + lives;
-		scoreText.text = "" + score;
+		timeText.text = "Time: " + (int)System.Math.Floor(time) + " seconds";
+		scoreText.text = "Score: " + score;
+		time -= Time.deltaTime;
+
+		if(time <= 0 || lives <= 0) {
+			SceneManager.LoadScene("GameOver");
+		}
 	}
 
 	IEnumerator SpawnHappies()
 	{
-		while (true)
-		{
-			Vector2 spawnPosition = new Vector2(Random.Range(-90, 90), Random.Range(-50, 50));
-			GameObject a = (GameObject)Instantiate(happy, spawnPosition, Quaternion.identity);
-			yield return new WaitForSeconds(1.0f);
+		while (true) {
+			Vector2 spawnPosition = new Vector2(Random.Range(-90, 90), Random.Range(-50, 47));
+			Instantiate(happy, spawnPosition, Quaternion.identity);
+			yield return new WaitForSeconds(happyRate);
 		}
 	}
 
 	IEnumerator SpawnStaticTrolls()
 	{
-		while (true)
-		{
+		while (true) {
 			Vector2 spawnPosition = new Vector2(Random.Range(-96, 96), Random.Range(-54, 54));
-			GameObject a = (GameObject)Instantiate(troll, spawnPosition, Quaternion.identity);
-			yield return new WaitForSeconds(5.0f);
+			Instantiate(troll, spawnPosition, Quaternion.identity);
+			yield return new WaitForSeconds(staticTrollRate);
 		}
 	}
 
 	IEnumerator SpawnMovingTrolls()
 	{
-		while (true)
-		{
+		while (true) {
 			GameObject t = (GameObject)Instantiate(troll);
 			t.GetComponent<Troll>().moving = true;
-			yield return new WaitForSeconds(10.0f);
+			yield return new WaitForSeconds(movingTrollRate);
 		}
 	}
 }
